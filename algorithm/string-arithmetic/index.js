@@ -97,11 +97,12 @@ module.exports = (str) => {
       } else {
         num_stack.push(item);
       }
-      if (i === len - 1) { // 最后一个数字 需计算
-        [ope_stack, num_stack] = compute(ope_stack, num_stack, item);
-      }
     }
-  }
+    if (i === len - 1 && ope_stack.length > 0) {
+      // 最后一个数字 且还有运算符 => 需计算
+      [ope_stack, num_stack] = compute(ope_stack, num_stack, item);
+    }
+  } // for end
   return num_stack.pop();
 }
 // console.log("9+(3-1)*3+8/2 = ", main("9+(3-1)*3+8/2"));
@@ -111,6 +112,6 @@ module.exports = (str) => {
 //   main("220+[(3-1)*3+1-2]*5*(12 - 2)/2+10+2")
 // ); // 357
 // console.log(
-//   "[(30-2)+(3-1)*2*3/2*(5-3)/3]*3+(12 - 2)/5",
-//   main("[(30-2)+(3-1)*2*3/2*(5-3)/3]*3+(12 - 2)/5")
+//   "123/3*12*(32-2)/2+[2+12*(3+1)+(36-21)/5*12] = ",
+//   main("123/3*12*(32-2)/2+[2+12*(3+1)+(36-21)/5*12]")
 // );
