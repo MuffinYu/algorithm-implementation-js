@@ -2,7 +2,7 @@ language: node_js
 node_js: 
   - "lts/*"
 install:
-  - npm install -g codecov
+  - yarn # 安装依赖
 script:
   - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
   - codecov --token=656ce0e0-43f3-4c17-92e2-4a248445f6be
